@@ -1,5 +1,5 @@
 #VPR iframes
-We use this project to spin up simple HTML to be used as iframes.
+We use this project to spin up simple HTML to be used in iframes.
 
 ## Technology
 - [Flask](http://flask.pocoo.org/): Used for local development
