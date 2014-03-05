@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}VPR iframes{% endblock %}
+{% block description %}VPR uses pages at vpr.net/apps/iframe to publish iframes for embedding in projects.{% endblock %}
+
+{% block header_title %}VPR iframes{% endblock %}
+{% block content %}
+{% for link in links %}
+    <p><a href="{{ link.url }}">{{ link.url }}</a></p>
+{% endfor %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

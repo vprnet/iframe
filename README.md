@@ -1,7 +1,10 @@
 #VPR iframes
 We use this project to spin up simple HTML to be used in iframes.
 
-## Technology
+##Free to Use
+Want to use any of this code? Or to embed an iframe yourself? Go for it!
+
+##Technology
 - [Flask](http://flask.pocoo.org/): Used for local development
 
 - [Frozen-Flask](http://pythonhosted.org/Frozen-Flask/): Freezes Flask application into a series of static files
@@ -12,7 +15,7 @@ We use this project to spin up simple HTML to be used in iframes.
 
 - [Sass](http://sass-lang.com/): CSS extension that allows for variables, inheritance, and even logic in stylesheets
 
-## Author
+##Author
 [Matt Parrilla](http://twitter.com/mattparrilla)
 
 ##Copyright and License
