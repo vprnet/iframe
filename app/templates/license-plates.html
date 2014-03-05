@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block title %}VPR: License Plate Screeners{% endblock %}
+{% block description %}This is the source for an iframe embedded on digital.vpr.net{% endblock %}
+
+{% block style %}
+<link href="{{ url_for('static', filename='css/license.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block iframe %}
+<h3>Automated License Plate Readings By Agency</h3>
+<table class="table table-striped table-bordered">
+    <tr id="title">
+        <th>Agency</th>
+        <th>Number Of Readings</th>
+    </tr>
+    <tr>
+        <td>Vermont State Police</td>
+        <td>1,335,027</td>
+    </tr>
+    <tr>
+        <td>Barre PD</td>
+        <td>12,958</td>
+    </tr>
+    <tr>
+        <td>Bennington County</td>
+        <td>137,514</td>
+    </tr>
+    <tr>
+        <td>Bennington PD</td>
+        <td>166,639</td>
+    </tr>
+    <tr>
+        <td>Brandon PD</td>
+        <td>42,443</td>
+    </tr>
+    <tr>
+        <td>Brattleboro PD</td>
+        <td>36,947</td>
+    </tr>
+    <tr>
+        <td>Burlington PD</td>
+        <td>522,446</td>
+    </tr>
+    <tr>
+        <td>Castleton PD</td>
+        <td>2,765</td>
+    </tr>
+    <tr>
+        <td>Chittenden County</td>
+        <td>220,284</td>
+    </tr>
+    <tr>
+        <td>Colchester PD</td>
+        <td>174,708</td>
+    </tr>
+    <tr>
+        <td>DMV</td>
+        <td>71,546</td>
+    </tr>
+    <tr>
+        <td>Essex County</td>
+        <td>21,891</td>
+    </tr>
+    <tr>
+        <td>Essex PD</td>
+        <td>122,471</td>
+    </tr>
+    <tr>
+        <td>Franklin County</td>
+        <td>87,468</td>
+    </tr>
+    <tr>
+        <td>Grand Isle County</td>
+        <td>838,915</td>
+    </tr>
+    <tr>
+        <td>Hardwick PD</td>
+        <td>138,584</td>
+    </tr>
+    <tr>
+        <td>Hartford PD</td>
+        <td>110,029</td>
+    </tr>
+    <tr>
+        <td>Lamoille PD</td>
+        <td>55,648</td>
+    </tr>
+    <tr>
+        <td>Lamoille County</td>
+        <td>55,648</td>
+    </tr>
+    <tr>
+        <td>Ludlow, PD</td>
+        <td>4,449</td>
+    </tr>
+    <tr>
+        <td>Manchester PD</td>
+        <td>74,794</td>
+    </tr>
+    <tr>
+        <td>Milton PD</td>
+        <td>174,611</td>
+    </tr>
+    <tr>
+        <td>Newport PD</td>
+        <td>343,065</td>
+    </tr>
+    <tr>
+        <td>Northfield PD</td>
+        <td>184,493</td>
+    </tr>
+    <tr>
+        <td>Orange County</td>
+        <td>94,149</td>
+    </tr>
+    <tr>
+        <td>Orleans County</td>
+        <td>7,048</td>
+    </tr>
+    <tr>
+        <td>Rutland PD</td>
+        <td>539,680</td>
+    </tr>
+    <tr>
+        <td>Rutland County</td>
+        <td>173,564</td>
+    </tr>
+    <tr>
+        <td>Saint Albans PD</td>
+        <td>413,092</td>
+    </tr>
+    <tr>
+        <td>Shelburne PD</td>
+        <td>166,421</td>
+    </tr>
+    <tr>
+        <td>South Burlington PD</td>
+        <td>400,981</td>
+    </tr>
+    <tr>
+        <td>Springfield PD</td>
+        <td>130,803</td>
+    </tr>
+    <tr>
+        <td>Stowe PD</td>
+        <td>90,909</td>
+    </tr>
+    <tr>
+        <td>Swanton PD</td>
+        <td>14,456</td>
+    </tr>
+    <tr>
+        <td>Vergennes PD</td>
+        <td>109,834</td>
+    </tr>
+    <tr>
+        <td>Waterbury PD</td>
+        <td>13,348</td>
+    </tr>
+    <tr>
+        <td>Williston PD</td>
+        <td>759,632</td>
+    </tr>
+    <tr>
+        <td>Wilmington PD</td>
+        <td>121,974</td>
+    </tr>
+    <tr>
+        <td>Windsor County</td>
+        <td>239,295</td>
+    </tr>
+    <tr>
+        <td>Winhall PD</td>
+        <td>31,950</td>
+    </tr>
+    <tr>
+        <td>Winooski PD</td>
+        <td>182,805</td>
+    </tr>
+    <tr>
+        <th>Total</th>
+        <th id="total">7,921,182</th>
+    </tr>
+</table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/svg-support.js') }}"></script>
+<!-- Jquery and bootstrap.js not included by default -->
+{% endblock %}

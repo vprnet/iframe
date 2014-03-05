@@ -1,0 +1,39 @@
+#box {
+    background: #efeeee;
+    width: 250px;
+    padding: 5px 0;
+    margin-top: 70px;
+}
+
+h3 {
+    font-size: 16px;
+    border-bottom: 1px solid white;
+    margin: 0;
+    padding: 10px;
+}
+
+td {
+    font-size: 12px;
+    padding: 0 10px;
+}
+
+td.urgency {
+    width: 70px;
+    font-weight: 500;
+}
+
+tr {
+    height: 70px;
+}
+
+#high {
+    color: red;
+}
+
+#medium {
+    color: darken(#fab600, 10%);
+}
+
+#low {
+    color: $green;
+}

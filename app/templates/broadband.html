@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}VPR: Planned Broadband Expansion{% endblock %}
+{% block description %}This is the source for an iframe embedded on digital.vpr.net{% endblock %}
+
+{% block style %}
+<link href="{{ url_for('static', filename='css/broadband.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block iframe %}
+<h3>Planned Broadband Expansion of Service</h3>
+<table class="table table-striped table-bordered">
+    <tr id="title">
+        <th>Town</th>
+        <th>FairPoint</th>
+        <th>VTel</th>
+        <th>Total</th>
+    </tr>
+    <tr><td>ALBANY</td><td>44</td><td>121</td><td>121</td></tr>
+    <tr><td>ARLINGTON</td><td class="zero">0</td><td>4</td><td>4</td></tr>
+    <tr><td>AVERILL</td><td class="zero">0</td><td>1</td><td>1</td></tr>
+    <tr><td>BARNARD</td><td>28</td><td>70</td><td>70</td></tr>
+    <tr><td>BARNET</td><td>126</td><td>174</td><td>174</td></tr>
+    <tr><td>BELVIDERE</td><td>133</td><td>138</td><td>138</td></tr>
+    <tr><td>BETHEL</td><td>24</td><td>71</td><td>73</td></tr>
+    <tr><td>BLOOMFIELD</td><td>40</td><td>108</td><td>108</td></tr>
+    <tr><td>BRADFORD</td><td>8</td><td class="zero">0</td><td>8</td></tr>
+    <tr><td>BRAINTREE</td><td>7</td><td>35</td><td>39</td></tr>
+    <tr><td>BROOKFIELD</td><td class="zero">0</td><td>2</td><td>2</td></tr>
+    <tr><td>BROOKLINE</td><td class="zero">0</td><td>2</td><td>2</td></tr>
+    <tr><td>BROWNINGTON</td><td>3</td><td>9</td><td>12</td></tr>
+    <tr><td>BRUNSWICK</td><td class="zero">0</td><td>18</td><td>18</td></tr>
+    <tr><td>CABOT</td><td class="zero">0</td><td>25</td><td>25</td></tr>
+    <tr><td>CAMBRIDGE</td><td>4</td><td class="zero">0</td><td>4</td></tr>
+    <tr><td>CANAAN</td><td class="zero">0</td><td>119</td><td>119</td></tr>
+    <tr><td>CHELSEA</td><td>30</td><td>70</td><td>94</td></tr>
+    <tr><td>CHITTENDEN</td><td class="zero">0</td><td>2</td><td>3</td></tr>
+    <tr><td>CORINTH</td><td>53</td><td class="zero">0</td><td>53</td></tr>
+    <tr><td>DOVER</td><td class="zero">0</td><td>22</td><td>22</td></tr>
+    <tr><td>EAST HAVEN</td><td class="zero">0</td><td>3</td><td>3</td></tr>
+    <tr><td>EDEN</td><td class="zero">0</td><td>9</td><td>9</td></tr>
+    <tr><td>FAIRLEE</td><td>1</td><td class="zero">0</td><td>1</td></tr>
+    <tr><td>FERDINAND</td><td class="zero">0</td><td>1</td><td>1</td></tr>
+    <tr><td>FLETCHER</td><td class="zero">0</td><td>1</td><td>1</td></tr>
+    <tr><td>GLOVER</td><td class="zero">0</td><td>3</td><td>3</td></tr>
+    <tr><td>GRANBY</td><td>1</td><td>10</td><td>10</td></tr>
+    <tr><td>GRANVILLE</td><td class="zero">0</td><td>21</td><td>21</td></tr>
+    <tr><td>GROTON</td><td>8</td><td>3</td><td>12</td></tr>
+    <tr><td>GUILDHALL</td><td>28</td><td>40</td><td>40</td></tr>
+    <tr><td>GUILFORD</td><td>9</td><td>1</td><td>10</td></tr>
+    <tr><td>HALIFAX</td><td>62</td><td>155</td><td>155</td></tr>
+    <tr><td>HANCOCK</td><td>3</td><td>25</td><td>25</td></tr>
+    <tr><td>HARDWICK</td><td class="zero">0</td><td>4</td><td>4</td></tr>
+    <tr><td>IRASBURG</td><td>5</td><td>12</td><td>12</td></tr>
+    <tr><td>LEMINGTON</td><td>6</td><td>16</td><td>16</td></tr>
+    <tr><td>LOWELL</td><td>4</td><td>43</td><td>43</td></tr>
+    <tr><td>MAIDSTONE</td><td>3</td><td>88</td><td>88</td></tr>
+    <tr><td>MARLBORO</td><td class="zero">0</td><td>8</td><td>8</td></tr>
+    <tr><td>MARSHFIELD</td><td class="zero">0</td><td>7</td><td>7</td></tr>
+    <tr><td>MONTGOMERY</td><td>12</td><td>2</td><td>14</td></tr>
+    <tr><td>NEWARK</td><td>15</td><td>34</td><td>34</td></tr>
+    <tr><td>NEWBURY</td><td class="zero">0</td><td>4</td><td>6</td></tr>
+    <tr><td>NEWFANE</td><td class="zero">0</td><td>3</td><td>3</td></tr>
+    <tr><td>NORWICH</td><td class="zero">0</td><td>32</td><td>33</td></tr>
+    <tr><td>PEACHAM</td><td class="zero">0</td><td>1</td><td>1</td></tr>
+    <tr><td>PITTSFIELD</td><td>13</td><td>12</td><td>25</td></tr>
+    <tr><td>POMFRET</td><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td>RANDOLPH</td><td>1</td><td>7</td><td>8</td></tr>
+    <tr><td>READING</td><td>2</td><td>5</td><td>5</td></tr>
+    <tr><td>READSBORO</td><td>19</td><td>64</td><td>82</td></tr>
+    <tr><td>ROCHESTER</td><td>8</td><td>64</td><td>69</td></tr>
+    <tr><td>ROCKINGHAM</td><td class="zero">0</td><td>2</td><td>2</td></tr>
+    <tr><td>ROYALTON</td><td class="zero">0</td><td>4</td><td>4</td></tr>
+    <tr><td>RUPERT</td><td>51</td><td>134</td><td>142</td></tr>
+    <tr><td>RYEGATE</td><td class="zero">0</td><td>3</td><td>3</td></tr>
+    <tr><td>SANDGATE</td><td>5</td><td>93</td><td>93</td></tr>
+    <tr><td>SHAFTSBURY</td><td class="zero">0</td><td>12</td><td>12</td></tr>
+    <tr><td>SHARON</td><td class="zero">0</td><td>10</td><td>10</td></tr>
+    <tr><td>SHEFFIELD</td><td class="zero">0</td><td>5</td><td>5</td></tr>
+    <tr><td>STAMFORD</td><td class="zero">0</td><td>5</td><td>5</td></tr>
+    <tr><td>STOCKBRIDGE</td><td>28</td><td>79</td><td>79</td></tr>
+    <tr><td>STRAFFORD</td><td class="zero">0</td><td>79</td><td>79</td></tr>
+    <tr><td>SUNDERLAND</td><td class="zero">0</td><td>3</td><td>3</td></tr>
+    <tr><td>SUTTON</td><td class="zero">0</td><td>4</td><td>4</td></tr>
+    <tr><td>THETFORD</td><td>2</td><td>55</td><td>57</td></tr>
+    <tr><td>TOPSHAM</td><td class="zero">0</td><td>1</td><td>4</td></tr>
+    <tr><td>TOWNSHEND</td><td>2</td><td>5</td><td>5</td></tr>
+    <tr><td>TUNBRIDGE</td><td>39</td><td>65</td><td>65</td></tr>
+    <tr><td>VERSHIRE</td><td>308</td><td class="zero">0</td><td>308</td></tr>
+    <tr><td>VICTORY</td><td>2</td><td>13</td><td>13</td></tr>
+    <tr><td>WALDEN</td><td class="zero">0</td><td>3</td><td>3</td></tr>
+    <tr><td>WASHINGTON</td><td>16</td><td class="zero">0</td><td>16</td></tr>
+    <tr><td>WATERVILLE</td><td class="zero">0</td><td>2</td><td>2</td></tr>
+    <tr><td>WEST FAIRLEE</td><td>57</td><td class="zero">0</td><td>57</td></tr>
+    <tr><td>WEST WINDSOR</td><td class="zero">0</td><td>1</td><td>1</td></tr>
+    <tr><td>WESTMINSTER</td><td class="zero">0</td><td>0</td><td>1</td></tr>
+    <tr><td>WESTON</td><td class="zero">0</td><td>2</td><td>2</td></tr>
+    <tr><td>WHITINGHAM</td><td class="zero">0</td><td>121</td><td>123</td></tr>
+    <tr><td>WILMINGTON</td><td class="zero">0</td><td>6</td><td>6</td></tr>
+    <tr><td>WOLCOTT</td><td>15</td><td>34</td><td>34</td></tr>
+    <tr><td>WOODBURY</td><td>6</td><td>15</td><td>17</td></tr>
+    <tr><th>Grand Total</th><th>1232</th><th>2426</th><th>2995</th></tr>
+</table>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/svg-support.js') }}"></script>
+<!-- Jquery and bootstrap.js not included by default -->
+{% endblock %}

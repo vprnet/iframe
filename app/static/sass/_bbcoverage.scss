@@ -1,0 +1,25 @@
+body {
+    padding: 10px;
+}
+h3 {
+    margin: 10px auto 20px;
+    font-size: 23px;
+    text-align: center;
+}
+table {
+    margin: 0 auto;
+    max-width: 500px;
+    #title th {
+        text-align: center;
+    }
+    tr th:last-child, tr th:nth-child(2), tr th:nth-child(3) {
+        text-align: right;
+    }
+    tr td:last-child, tr td:nth-child(2), tr td:nth-child(3), #total {
+        text-align: right;
+    }
+}
+
+.zero {
+    color: lighten($gray, 40%);
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+    svg {
+        font: 10px sans-serif;
+        display: inline;
+    }
+</style>
+
+<body>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+
+<script>
+
+    // Set window height + width
+    var width = 1000,
+        height = 650;
+
+    // Define path generator
+    var path = d3.geo.path();
+
+    // Create SVG Element
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    // Define scale to sort data values into color buckets
+    var color2 = d3.scale.threshold()
+        .domain([5, 10, 20, 30, 50, 100, 200, 300, 400])
+        .range(["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#b30000","#7f0000"]);
+
+    var color = d3.scale.threshold()
+        .domain([5, 10, 20, 30, 50, 100, 200, 300, 400])
+        .range(["#f7fbff","#deebf7","#c6dbef","#9ecae1","#6baed6","#4292c6","#2171b5","#08519c","#08306b"]);
+
+    // Legend Stuff
+
+    var y = d3.scale.sqrt()
+        .domain([0, 50000])
+        .range([0,325]);
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .tickValues(color.domain())
+        .orient("right");
+
+    // Load CSV
+    d3.csv("{{ url_for('static', filename='data/health-connect/exchange-costs.csv' )}}", function(data) {
+
+        // Load TopoJSON
+        d3.json("{{ url_for('static', filename='data/health-connect/usa.json' )}}", function(error, us) {
+
+            for (var i = 0; i < data.length; i++) {
+                var dataState = data[i].state;
+                var dataCost = parseFloat(data[i].awarded);
+                var dataCPC = parseInt(data[i].cpc);
+                var dataExchange = data[i].exchange;
+
+                for (var j = 0; j < us.objects.us_states.geometries.length; j++) {
+                    var jsonState = us.objects.us_states.geometries[j].properties.name;
+
+                    if (dataState.replace(' ', '') == jsonState) {
+                        us.objects.us_states.geometries[j].properties.cost = dataCost;
+                        us.objects.us_states.geometries[j].properties.cpc = dataCPC;
+                        us.objects.us_states.geometries[j].properties.exchange = dataExchange;
+                        break;
+                    }
+                }
+            }
+
+            var states = topojson.feature(us, us.objects.us_states);
+
+            svg.append("path")
+                .datum(states)
+                .attr("d", path)
+                .style("stroke", "#777")
+                .style("stroke-width", "1");
+
+            svg.selectAll(".subunit")
+                .data(topojson.feature(us, us.objects.us_states).features)
+            .enter().append("path")
+                .attr("d", path)
+                .style("stroke", "#bbb")
+                .style("stroke-width", "1")
+                .style("fill", function(d) {
+                    var cpc = d.properties.cpc;
+                    var exchange = d.properties.exchange;
+
+                    if (cpc) {
+                        if (exchange) {
+                            return color(cpc);
+                        } else {
+                            return color(cpc);
+                        }
+                    } else {
+                        return "#ddd";
+                    }
+                })
+
+                .on("mouseover", function(d) {
+                    var xPosition = d3.mouse(this)[0];
+                    var yPosition = d3.mouse(this)[1] - 30;
+
+                    svg.append("text")
+                        .attr("id", "tooltip")
+                        .attr("x", xPosition)
+                        .attr("y", yPosition)
+                        .attr("text-anchor", "middle")
+                        .attr("font-family", "sans-serif")
+                        .attr("font-size", "11px")
+                        .attr("font-weight", "bold")
+                        .attr("fill", "black")
+                        .text(d.properties.name + ' $' + d.properties.cpc);
+
+                    d3.select(this)
+                    .style("fill", "#509e2f");
+                })
+                .on("mouseout", function(d) {
+                    d3.select("#tooltip").remove();
+
+                    d3.select(this)
+                    .transition()
+                    .duration(250)
+                    .style("fill", function(d) {
+                    var cpc = d.properties.cpc;
+
+                    if (cpc) {
+                        return color(cpc);
+                    } else {
+                        return "#ddd";
+                    }
+                });
+
+
+
+            });
+
+        });
+    });
+
+
+</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/spreadsheet/tq?key=0AtWnpcGxoF0xdHdTc05HbXZOdUJNTTZGR2RIemRveVE&transpose=0&headers=1&range=A1%3AC102&gid=1&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"","minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null}],"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"series":[{"type":"bars"}],"booleanRole":"certainty","title":"","interpolateNulls":false,"animation":{"duration":500},"legend":"top","type":"line","hAxis":{"useFormatFromData":true,"title":"","minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},"width":600,"height":371},"state":{},"view":{"columns":[{"calc":"stringify","type":"string","sourceColumn":0},1,2]},"isDefaultVisualization":false,"chartType":"ComboChart","chartName":"Chart 1"} </script>

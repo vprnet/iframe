@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}VPR: App Template{% endblock %}
+{% block description %}This is the VPR app template. We use it to generate HTML locally and then push it to S3. Cheap, easy, and indestructible!{% endblock %}
+
+{% block style %}
+<link href="{{ url_for('static', filename='css/gartner.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block header_title %}VPR App Template{% endblock %}
+{% block content %}
+
+<div id="box">
+<h3>Gartner Risk Assesment Scale</h3>
+<table>
+    <tr>
+        <td id="high" class="urgency">High</td>
+        <td>Definite material impact on project success if this area is not addressed immediately</td>
+    </tr>
+    <tr>
+        <td id="medium" class="urgency">Medium</td>
+        <td>Potential material impact on project success that needs to be addressed proactively</td>
+    </tr>
+    <tr>
+        <td id="low" class="urgency">Low</td>
+        <td>No immediate action required. Continue to monitor risk</td>
+    </tr>
+</table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/svg-support.js') }}"></script>
+<!-- Jquery and bootstrap.js not included by default -->
+{% endblock %}

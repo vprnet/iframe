@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Town Meeting Results | VPR{% endblock %}
+{% block description %}This is the source for an iframe embedded on digital.vpr.net{% endblock %}
+
+{% block bootstrap %}{% endblock %}
+{% block style %}
+<link href="{{ url_for('static', filename='css/town-meeting.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block iframe %}
+<h3>Town Budgets</h3>
+<div id="town_budget_table">
+</div>
+<h3>School Budgets</h3>
+<div id="school_budget_table">
+</div>
+<h3>Public Bank</h3>
+<div id="public_bank_table">
+</div>
+<h3>Anti Tar Sands Resolution</h3>
+<div id="tar_sands_table">
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/town-meeting-ck.js') }}"></script>
+{% endblock %}

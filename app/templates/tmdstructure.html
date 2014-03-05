@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Town Budget Results index.html | VPR{% endblock %}
+{% block description %}This is the source for an iframe embedded on digital.vpr.net{% endblock %}
+
+{% block bootstrap %}{% endblock %}
+{% block style %}
+<link href="{{ url_for('static', filename='css/code-style.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block iframe %}
+<div class="codehilite"><pre><span class="n">your</span><span class="o">-</span><span class="n">project</span><span class="o">/</span>
+    <span class="n">index</span><span class="p">.</span><span class="n">html</span>
+    <span class="n">js</span><span class="o">/</span>
+        <span class="n">jquery</span><span class="p">.</span><span class="n">CSVToTable</span><span class="p">.</span><span class="n">js</span>
+        <span class="n">script</span><span class="p">.</span><span class="n">js</span>
+</pre></div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

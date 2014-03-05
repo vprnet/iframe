@@ -1,0 +1,23 @@
+{% extends "sewerbase.html" %}
+
+{% block title %}Wastewater Overflow 2013{% endblock %}
+{% block description %}The VPR Sandbox: where we make stuff!{% endblock %}
+
+{% block style %}
+    <link href="{{ url_for('static', filename='css/wastewater.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block head_scripts %}
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+{% endblock %}
+
+{% block header_title %}2013 Wastewater Overflow{% endblock %}
+{% block content %}
+<svg  id="chart"></svg>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/overflow.js') }}"></script>
+<script src="{{ url_for('static', filename='js/svg-support.js') }}"></script>
+<!-- Jquery and bootstrap.js not included by default -->
+{% endblock %}

@@ -1,0 +1,36 @@
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.legend text {
+    fill: black;
+    stroke: black;
+}
+
+body {
+    padding-top: 0;
+}
+
+.x-axis {
+    font-style: italic;
+    fill: #555;
+}

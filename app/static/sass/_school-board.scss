@@ -1,0 +1,24 @@
+body {
+    padding: 10px;
+}
+h3 {
+    margin: 10px auto 20px;
+    font-size: 23px;
+    text-align: center;
+}
+table {
+    margin: 0 auto;
+    max-width: 500px;
+    #title th {
+        text-align: center;
+    }
+    tr td:last-child {
+        color: $gray;
+        font-size: 12px;
+        padding-top: 11px;
+    }
+}
+
+.zero {
+    color: lighten($gray, 40%);
+}
