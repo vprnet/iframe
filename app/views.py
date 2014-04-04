@@ -1,6 +1,7 @@
 from app import app
 from flask import render_template, request
 from config import BASE_URL
+import csv
 
 
 # Not being used anywhere
@@ -69,3 +70,12 @@ def tmd_script():
 @app.route('/code/tmd-structure')
 def tmd_structure():
     return render_template('tmdstructure.html')
+
+
+@app.route('/winter-lengths')
+def winter_length():
+    f = csv.reader(open('data/winters.csv', 'rU'))
+    winters = [l for l in f]
+    del winters[0]
+
+    return render_template('winter.html', winters=winters)
