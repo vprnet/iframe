@@ -5,8 +5,8 @@ FREEZER_IGNORE_MIMETYPE_WARNINGS = True
 # Amazon S3 Settings
 AWS_KEY = ''
 AWS_SECRET_KEY = ''
-AWS_BUCKET = ''
-AWS_DIRECTORY = ''  # Use if S3 bucket is not root
+AWS_BUCKET = 'www.vpr.net'
+AWS_DIRECTORY = 'apps/iframe'  # Use if S3 bucket is not root
 
 # Cache Settings (units in seconds)
 STATIC_EXPIRES = 60 * 24 * 3600

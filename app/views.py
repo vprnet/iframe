@@ -72,10 +72,9 @@ def tmd_structure():
     return render_template('tmdstructure.html')
 
 
-@app.route('/winter-lengths')
+@app.route('/winter')
 def winter_length():
-    f = csv.reader(open('data/winters.csv', 'rU'))
+    f = csv.reader(open('app/data/winters.csv', 'rU'))
     winters = [l for l in f]
-    del winters[0]
 
     return render_template('winter.html', winters=winters)

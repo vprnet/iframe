@@ -1,21 +1,80 @@
 {% extends "base.html" %}
 
-{% block title %}Town Budget Results index.html | VPR{% endblock %}
-{% block description %}This is the source for an iframe embedded on digital.vpr.net{% endblock %}
+{% block title %}Burlington Max Temperature Since 1941 | VPR{% endblock %}
+{% block description %}A graph showing the daily max temperature in Burlington from January 1, 1941 to December 31, 2011{% endblock %}
 
 {% block bootstrap %}{% endblock %}
 {% block style %}
-<link href="{{ url_for('static', filename='css/code-style.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/winter.css') }}" rel="stylesheet">
 {% endblock %}
 
 
 {% block iframe %}
-<div class="codehilite"><pre><span class="n">your</span><span class="o">-</span><span class="n">project</span><span class="o">/</span>
-    <span class="n">index</span><span class="p">.</span><span class="n">html</span>
-    <span class="n">js</span><span class="o">/</span>
-        <span class="n">jquery</span><span class="p">.</span><span class="n">CSVToTable</span><span class="p">.</span><span class="n">js</span>
-        <span class="n">script</span><span class="p">.</span><span class="n">js</span>
-</pre></div>
+<h1>Daily Max Temperature in Burlington, VT 1941-2012</h1>
+<h2>Created by: @mattparrilla of @vprnet // Data Source: USHCN, Burlington Station</h2>
+<table id="months">
+    <tr>
+        <td id="jan">Jan</td>
+        <td id="apr">Apr</td>
+        <td id="jul">Jul</td>
+        <td id="oct">Oct</td>
+        <td id="jan2">Jan</td>
+    </tr>
+</table>
+<table id="data">
+{% for winter in winters %}
+    {% if loop.index == 1 %}
+    <tr>
+        {% for day in winter %}
+            <td {% if day|int == 1 %}class="month"{% endif %}></td>
+        {% endfor %}
+    </tr>
+    {% else %}
+    <tr>
+        {% for day in winter %}
+            {% if loop.index == 1 %}
+                <td>{{ day }}</td>
+            {% else %}
+                <td
+                {% if day|int < 20 %}class="sub20"
+                {% elif day|int >=20 and day|int < 30 %}class="sub30"
+                {% elif day|int >=30 and day|int < 40 %}class="sub40"
+                {% elif day|int >=40 and day|int < 50 %}class="sub50"
+                {% elif day|int >=50 and day|int < 60 %}class="sub60"
+                {% elif day|int >=60 and day|int < 70 %}class="sub70"
+                {% elif day|int >=70 and day|int < 80 %}class="sub80"
+                {% elif day|int >=80 and day|int < 90 %}class="sub90"
+                {% elif day|int >=90 %}class="greater90"
+                {% endif %}></td>
+            {% endif %}
+        {% endfor %}
+    </tr>
+    {% endif %}
+{% endfor %}
+</table>
+
+<table id="legend">
+    <tr>
+        <td class="space sub20"></td>
+        <td>Below 20&deg;F</td>
+        <td class="space sub30"></td>
+        <td>20 - 30</td>
+        <td class="space sub40"></td>
+        <td>30 - 40</td>
+        <td class="space sub50"></td>
+        <td>40 - 50</td>
+        <td class="space sub60"></td>
+        <td>50 - 60</td>
+        <td class="space sub70"></td>
+        <td>60 - 70</td>
+        <td class="space sub80"></td>
+        <td>70 - 80</td>
+        <td class="space sub90"></td>
+        <td>80 - 90</td>
+        <td class="space greater90"></td>
+        <td>Above 90</td>
+    </tr>
+</table>
 {% endblock %}
 
 {% block scripts %}
