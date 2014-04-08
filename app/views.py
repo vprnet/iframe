@@ -76,5 +76,20 @@ def tmd_structure():
 def winter_length():
     f = csv.reader(open('app/data/winters.csv', 'rU'))
     winters = [l for l in f]
+    temperatures = [[20, 30, 40, 50, 60, 70, 80, 90],
+        [20, 22, 24, 26, 28, 30, 32, 34],
+        [25, 26, 27, 28, 29, 30, 31, 32],
+        [30, 32, 34, 36, 38, 40, 42, 44],
+        [35, 36, 37, 38, 39, 40, 41, 42],
+        [40, 42, 44, 46, 48, 50, 52, 54],
+        [45, 46, 47, 48, 49, 50, 51, 52],
+        [50, 52, 54, 56, 58, 60, 62, 64],
+        [55, 56, 57, 58, 59, 60, 61, 62],
+        [60, 62, 64, 66, 68, 70, 72, 74],
+        [65, 66, 67, 68, 69, 70, 71, 72],
+        [70, 72, 74, 76, 78, 80, 82, 84],
+        [80, 82, 84, 86, 88, 90, 92, 94]]
 
-    return render_template('winter.html', winters=winters)
+    return render_template('winter.html',
+        temperatures=temperatures,
+        winters=winters)

@@ -28,48 +28,49 @@ table#months {
   table#months td#jan2 {
     padding-left: 8px; }
 
-table#data {
+table.data {
   margin-top: 20px;
   border-spacing: 0 2px; }
-  table#data tr td {
-    width: 4px;
+  table.data tr td {
+    width: 2px;
     padding: 0;
     font-size: 12px;
-    height: 14px !important; }
-  table#data tr td:first-child {
-    padding-right: 10px; }
-  table#data tr td.month {
+    height: 6px !important; }
+  table.data tr td:first-child {
+    padding-right: 10px;
+    display: none; }
+  table.data tr td.month {
     border-left: 2px solid #999; }
-    table#data tr td.month:last-child {
+    table.data tr td.month:last-child {
       border-left: 0;
       border-right: 2px solid #999; }
 
-td.sub20 {
-  background: #4575b4; }
+td.temp1 {
+  background: #fff5f0; }
 
-td.sub30 {
-  background: #74add1; }
+td.temp2 {
+  background: #fee0d2; }
 
-td.sub40 {
-  background: #abd9e9; }
+td.temp3 {
+  background: #fcbba1; }
 
-td.sub50 {
-  background: #e0f3f8; }
+td.temp4 {
+  background: #fc9272; }
 
-td.sub60 {
-  background: #ffffbf; }
+td.temp5 {
+  background: #fb6a4a; }
 
-td.sub70 {
-  background: #fee090; }
+td.temp6 {
+  background: #ef3b2c; }
 
-td.sub80 {
-  background: #fdae61; }
+td.temp7 {
+  background: #cb181d; }
 
-td.sub90 {
-  background: #f46d43; }
+td.temp8 {
+  background: #a50f15; }
 
-td.greater90 {
-  background: #d73027; }
+td.temp9 {
+  background: #67000d; }
 
 table#legend {
   font-size: 12px;
