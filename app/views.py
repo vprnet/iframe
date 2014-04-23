@@ -32,6 +32,11 @@ def broadband():
     return render_template('broadband.html')
 
 
+@app.route('/town-meeting/school-budget-revote')
+def school_budget_revote():
+    return render_template('school-budget-revote.html')
+
+
 @app.route('/town-meeting/school-budget')
 def school_budget():
     return render_template('school-budget.html')

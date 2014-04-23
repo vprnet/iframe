@@ -52,4 +52,135 @@
  * });;
 
  *
- */(function(e){String.prototype.splitCSV=function(e){for(var t=this.split(e=e||","),n=t.length-1,r;n>=0;n--)t[n].replace(/"\s+$/,'"').charAt(t[n].length-1)=='"'?(r=t[n].replace(/^\s+"/,'"')).length>1&&r.charAt(0)=='"'?t[n]=t[n].replace(/^\s*"|"\s*$/g,"").replace(/""/g,'"'):n?t.splice(n-1,2,[t[n-1],t[n]].join(e)):t=t.shift().split(e).concat(t):t[n].replace(/""/g,'"');return t};e.fn.CSVToTable=function(t,n){var r={tableClass:"CSVTable",theadClass:"",thClass:"",tbodyClass:"",trClass:"",tdClass:"",loadingImage:"",loadingText:"Loading CSV data...",separator:",",startLine:0},n=e.extend(r,n);return this.each(function(){var r=e(this),i="";n.loadingImage?loading='<div style="text-align: center"><img alt="'+n.loadingText+'" src="'+n.loadingImage+'" /><br>'+n.loadingText+"</div>":loading=n.loadingText;r.html(loading);e.get(t,function(t){var s='<table class="'+n.tableClass+'">',o=t.replace("\r","").split("\n"),u=0,a=0,f=new Array;e.each(o,function(t,r){if(t==0&&typeof n.headers!="undefined"){f=n.headers;a=f.length;s+='<thead class="'+n.theadClass+'"><tr class="'+n.trClass+'">';e.each(f,function(e,t){s+='<th class="'+n.thClass+'">'+t+"</th>"});s+='</tr></thead><tbody class="'+n.tbodyClass+'">'}if(t==n.startLine&&typeof n.headers=="undefined"){f=r.splitCSV(n.separator);a=f.length;s+='<thead class="'+n.theadClass+'"><tr class="'+n.trClass+'">';e.each(f,function(e,t){s+='<th class="'+n.thClass+'">'+t+"</th>"});s+='</tr></thead><tbody class="'+n.tbodyClass+'">'}else if(t>=n.startLine){var o=r.splitCSV(n.separator);if(o.length>1){u++;o.length!=a&&(i+="error on line "+t+": Item count ("+o.length+") does not match header count ("+a+") \n");u%2?oddOrEven="odd":oddOrEven="even";s+='<tr class="'+n.trClass+" "+oddOrEven+'">';e.each(o,function(e,t){s+='<td class="'+n.tdClass+'">'+t+"</td>"});s+="</tr>"}}});s+="</tbody></table>";i?r.html(i):r.fadeOut(500,function(){r.html(s)}).fadeIn(function(){setTimeout(function(){r.trigger("loadComplete")},0)})})})}})(jQuery);$("#town_budget_table").CSVToTable("https://docs.google.com/spreadsheet/pub?key=0Aq_2MzT25yU2dGNmdHhZa0g2NmE2SXhRc3BlemdISlE&output=csv",{tableClass:"table table-bordered table-striped"});$("#public_bank_table").CSVToTable("https://docs.google.com/spreadsheet/pub?key=0Aq_2MzT25yU2dFd2aEpCQmZnRzZteldQYjh0Z2JUcGc&output=csv",{tableClass:"table table-bordered table-striped"});$("#school_budget_table").CSVToTable("https://docs.google.com/spreadsheet/pub?key=0Aq_2MzT25yU2dGFYUExwbTMxM240WHd1aDFfeGFsUmc&output=csv",{tableClass:"table table-bordered table-striped"});$("#tar_sands_table").CSVToTable("https://docs.google.com/spreadsheet/pub?key=0AtWnpcGxoF0xdGJueWdaWDQ5WHdZVTg4TlE1al9GUWc&output=csv",{tableClass:"table table-bordered table-striped"});
+ */
+
+ 
+ (function($){
+
+	/**
+	*
+	* CSV Parser credit goes to Brian Huisman, from his blog entry entitled "CSV String to Array in JavaScript":
+	* http://www.greywyvern.com/?post=258
+	*
+	*/
+	String.prototype.splitCSV = function(sep) {
+		for (var thisCSV = this.split(sep = sep || ","), x = thisCSV.length - 1, tl; x >= 0; x--) {
+			if (thisCSV[x].replace(/"\s+$/, '"').charAt(thisCSV[x].length - 1) == '"') {
+				if ((tl = thisCSV[x].replace(/^\s+"/, '"')).length > 1 && tl.charAt(0) == '"') {
+					thisCSV[x] = thisCSV[x].replace(/^\s*"|"\s*$/g, '').replace(/""/g, '"');
+				} else if (x) {
+					thisCSV.splice(x - 1, 2, [thisCSV[x - 1], thisCSV[x]].join(sep));
+				} else thisCSV = thisCSV.shift().split(sep).concat(thisCSV);
+			} else thisCSV[x].replace(/""/g, '"');
+		} return thisCSV;
+	};
+
+	$.fn.CSVToTable = function(csvFile, options) {
+		var defaults = {
+			tableClass: "CSVTable",
+			theadClass: "",
+			thClass: "",
+			tbodyClass: "",
+			trClass: "",
+			tdClass: "",
+			loadingImage: "",
+			loadingText: "Loading CSV data...",
+			separator: ",",
+			startLine: 0
+		};	
+		var options = $.extend(defaults, options);
+		return this.each(function() {
+			var obj = $(this);
+			var error = '';
+			(options.loadingImage) ? loading = '<div style="text-align: center"><img alt="' + options.loadingText + '" src="' + options.loadingImage + '" /><br>' + options.loadingText + '</div>' : loading = options.loadingText;
+			obj.html(loading);
+			$.get(csvFile, function(data) {
+				var tableHTML = '<table class="' + options.tableClass + '">';
+				var lines = data.replace('\r','').split('\n');
+				var printedLines = 0;
+				var headerCount = 0;
+				var headers = new Array();
+				$.each(lines, function(lineCount, line) {
+					if ((lineCount == 0) && (typeof(options.headers) != 'undefined')) {
+						headers = options.headers;
+						headerCount = headers.length;
+						tableHTML += '<thead class="' + options.theadClass + '"><tr class="' + options.trClass + '">';
+						$.each(headers, function(headerCount, header) {
+							tableHTML += '<th class="' + options.thClass + '">' + header + '</th>';
+						});
+						tableHTML += '</tr></thead><tbody class="' + options.tbodyClass + '">';
+					}
+					if ((lineCount == options.startLine) && (typeof(options.headers) == 'undefined')) {
+						headers = line.splitCSV(options.separator);
+						headerCount = headers.length;
+						tableHTML += '<thead class="' + options.theadClass + '"><tr class="' + options.trClass + '">';
+						$.each(headers, function(headerCount, header) {
+							tableHTML += '<th class="' + options.thClass + '">' + header + '</th>';
+						});
+						tableHTML += '</tr></thead><tbody class="' + options.tbodyClass + '">';
+					} else if (lineCount >= options.startLine) {
+						var items = line.splitCSV(options.separator);
+						if (items.length > 1) {
+							printedLines++;
+							if (items.length != headerCount) {
+								error += 'error on line ' + lineCount + ': Item count (' + items.length + ') does not match header count (' + headerCount + ') \n';
+							}
+							(printedLines % 2) ? oddOrEven = 'odd' : oddOrEven = 'even';
+							tableHTML += '<tr class="' + options.trClass + ' ' + oddOrEven + '">';
+							$.each(items, function(itemCount, item) {
+								tableHTML += '<td class="' + options.tdClass + '">' + item + '</td>';
+							});
+							tableHTML += '</tr>';
+						}
+					}
+				});
+				tableHTML += '</tbody></table>';
+				if (error) {
+					obj.html(error);
+				} else {
+					obj.fadeOut(500, function() {
+						obj.html(tableHTML)
+					}).fadeIn(function() {
+						// trigger loadComplete
+						setTimeout(function() {
+							obj.trigger("loadComplete");	
+						},0);
+					});
+				}
+			});
+		});
+	};
+
+})(jQuery);
+
+
+/* **********************************************
+     Begin town-meeting.js
+********************************************** */
+
+//@codekit-prepend "csvToTable.js"
+
+$('#town_budget_table').CSVToTable('https://docs.google.com/spreadsheet/pub?key=0Aq_2MzT25yU2dGNmdHhZa0g2NmE2SXhRc3BlemdISlE&output=csv',
+    {
+        tableClass: 'table table-bordered table-striped'
+});
+
+$('#public_bank_table').CSVToTable('https://docs.google.com/spreadsheet/pub?key=0Aq_2MzT25yU2dFd2aEpCQmZnRzZteldQYjh0Z2JUcGc&output=csv',
+    {
+        tableClass: 'table table-bordered table-striped'
+});
+
+$('#school_budget_table').CSVToTable('https://docs.google.com/spreadsheet/pub?key=0Aq_2MzT25yU2dGFYUExwbTMxM240WHd1aDFfeGFsUmc&output=csv',
+    {
+        tableClass: 'table table-bordered table-striped'
+});
+
+$('#tar_sands_table').CSVToTable('https://docs.google.com/spreadsheet/pub?key=0AtWnpcGxoF0xdGJueWdaWDQ5WHdZVTg4TlE1al9GUWc&output=csv',
+    {
+        tableClass: 'table table-bordered table-striped'
+});
+
+$('#school_budget_revote_table').CSVToTable('https://docs.google.com/spreadsheet/pub?key=0Avbz2oU6HFFZdHdKbFoyWkwxcVVQbG1DbEpLTERCNHc&output=csv',
+    {
+        tableClass: 'table table-bordered table-striped'
+});
